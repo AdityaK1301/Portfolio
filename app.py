@@ -2,6 +2,28 @@ import streamlit as st
 from pathlib import Path
 import pandas as pd
 
+try:
+    from streamlit_navigation import Page, Navigation
+except ImportError:
+    # Fallback for deployment
+    class Page:
+        def __init__(self, func, title, icon, default=False):
+            self.func = func
+            self.title = title
+            self.icon = icon
+            self.default = default
+    
+    class Navigation:
+        def __init__(self, pages):
+            self.pages = pages
+        
+        def run(self):
+            # Simple tab-based navigation for deployment
+            tabs = st.tabs([page.title for page in self.pages])
+            for i, (tab, page) in enumerate(zip(tabs, self.pages)):
+                with tab:
+                    page.func()
+
 st.set_page_config(
     page_title="Portfolio",
     
