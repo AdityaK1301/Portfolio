@@ -5,7 +5,6 @@ import pandas as pd
 try:
     from streamlit_navigation import Page, Navigation
 except ImportError:
-    # Fallback for deployment
     class Page:
         def __init__(self, func, title, icon, default=False):
             self.func = func
@@ -18,7 +17,6 @@ except ImportError:
             self.pages = pages
         
         def run(self):
-            # Simple tab-based navigation for deployment
             tabs = st.tabs([page.title for page in self.pages])
             for i, (tab, page) in enumerate(zip(tabs, self.pages)):
                 with tab:
@@ -242,11 +240,16 @@ def experience():
     
     st.markdown("""
     <div style='background: linear-gradient(135deg, #0c2461 0%, #1e3799 100%); 
-               padding: 2rem; border-radius: 15px; margin-bottom: 2rem;'>
-        <div style='display: flex; justify-content: between; align-items: start;'>
+               padding: 2rem; border-radius: 15px; margin-bottom: 2rem; color: white;'>
+        <div style='display: flex; justify-content: space-between; align-items: start;'>
             <div style='flex: 3;'>
-                <h2 style='color: white; margin-bottom: 0.5rem;'>AI Intern</h2>
+                <h2 style='color: white; margin-bottom: 0.3rem;'>AI Intern</h2>
                 <h3 style='color: #BB86FC; margin-bottom: 1rem;'>Alexion Techno Pvt. Ltd.</h3>
+                <p style='color: #e0e0e0; font-size: 1rem; line-height: 1.6;'>
+                Developed an <b>AI-powered CBSE Q&A chatbot</b> using <b>LangChain</b>, <b>RAG</b>, and <b>Streamlit</b>, enabling intelligent retrieval over NCERT textbooks.<br><br>
+Built and deployed <b>Flask REST APIs</b> for document processing and inference, integrating <b>voice-based interaction</b> with SpeechRecognition.<br><br>
+Optimized performance through <b>Groq/Ollama LLMs</b> and <b>FAISS vector stores</b>, achieving a <b>40% reduction in response time</b> and improving scalability for educational AI solutions.
+                </p>
             </div>
             <div style='flex: 1; text-align: right;'>
                 <div style='background: rgba(255,255,255,0.1); padding: 0.5rem 1rem; 
